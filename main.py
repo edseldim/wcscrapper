@@ -8,7 +8,8 @@ try:
 
 except FileNotFoundError:
     env_variables_dict = {
-            "django_key":"lorem-ipsum"
+            "django_key":"lorem-ipsum",
+            "scrapper_exec_time":"30"
         }
     with open("./config.json","w") as f:
         json.dump(env_variables_dict,f)
@@ -16,5 +17,5 @@ except FileNotFoundError:
     for key, value in env_variables_dict.items():
         os.environ[key] = value
 
-#subprocess.Popen(["python","web_scrapping\scheduler_main.py"],shell=True)
+subprocess.Popen(["python","web_scrapping\scheduler_main.py"],shell=True)
 subprocess.Popen(["python","django_wcapp\django_wcapp\manage.py","runserver"],shell=True)

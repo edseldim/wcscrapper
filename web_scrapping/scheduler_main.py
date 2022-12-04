@@ -21,9 +21,10 @@ def wipe_results():
         except FileNotFoundError:
             pass
 
-schedule.every(5).minutes.do(call_scrapper)
-schedule.every(5).minutes.do(move_result)
-schedule.every(5).minutes.do(wipe_results)
+scrapper_exec_time = int(os.environ.setdefault("scrapper_exec_time","30"))
+schedule.every(scrapper_exec_time).minutes.do(call_scrapper)
+schedule.every(scrapper_exec_time).minutes.do(move_result)
+schedule.every(scrapper_exec_time).minutes.do(wipe_results)
 while True:
     schedule.run_pending()
     time.sleep(30)

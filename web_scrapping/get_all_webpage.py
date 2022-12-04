@@ -19,11 +19,12 @@ class WCResultsScrapper(unittest.TestCase):
         self.assertTrue(cookies_btn.is_displayed())
         cookies_btn.click()
         
-        while(self.is_element_present(By.CSS_SELECTOR,".match-cards-lists-appender__load-all-button-container:has(span.of-button__content)")):
-            btn = self.driver.find_element(By.CSS_SELECTOR,".match-cards-lists-appender__load-all-button-container:has(span.of-button__content)")
-            self.assertTrue(btn.is_enabled())
+        expand_btn_css = ".match-cards-lists-appender__load-all-button-container:has(span.of-button__content)"
+        while(self.is_element_present(By.CSS_SELECTOR,expand_btn_css)):
+            expand_btn = self.driver.find_element(By.CSS_SELECTOR,expand_btn_css)
+            self.assertTrue(expand_btn.is_enabled())
             self.driver.implicitly_wait(5)
-            ActionChains(self.driver).move_to_element(btn).click(btn).perform()
+            ActionChains(self.driver).move_to_element(expand_btn).click(expand_btn).perform()
         
         self.currentResults = self.driver.page_source
 
