@@ -1,7 +1,7 @@
 # wcscrapper
-This is a project that combines data engineering (extract-transform-load), a backend powered by Django and a frontend using AJAX
+This is a project that combines data engineering (extract-transform-load), a backend powered by Django and a frontend using AJAX.
 
-[Project Preview](https://i.gyazo.com/b7303a26e96d60a7c95cdf08c56dc313.png)
+<img title="Project Preview" alt="Project Preview Image" src="https://i.gyazo.com/b7303a26e96d60a7c95cdf08c56dc313.png">
 
 This project aims at representing an ETL for 2022 Male World Cup results. 
 
