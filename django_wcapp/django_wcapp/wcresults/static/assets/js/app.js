@@ -8,17 +8,28 @@ let dateObj = {
 }
 
 class UI{
+
+
+
     removeHTML(){
         while(matchesContainer.firstChild){
             matchesContainer.firstChild.remove();
         }
     }
 
-    loadingMessage(){
+    showMessage(messageText, relativeParent,disappear=true){ // submitBtn.parentElement.parentElement
         const messageP = document.createElement("P");
-        messageP.textContent = "loading..."
-        submitBtn.parentElement.parentElement.append(messageP);
-        return messageP;
+        const divBlock = document.createElement("DIV");
+        messageP.textContent = messageText
+        divBlock.setAttribute("style","text-align:center")
+        divBlock.append(messageP)
+        relativeParent.append(divBlock);
+        if(!disappear){
+            return divBlock;
+        }
+        setTimeout(()=>{
+            messageP.remove()
+        },3000)
     }
 
     loadMatches(matchData){
@@ -44,6 +55,10 @@ class UI{
             `
             matchesContainer.append(rawHTMLElement);
         })
+
+        if(matchesContainer.children.length===0){
+            this.showMessage("No data to show",submitBtn.parentElement.parentElement,true)
+        }
     }
 }
 
@@ -56,8 +71,12 @@ function eventRegister(){
         }
 
         e.preventDefault();
-        loadingTxt = ui.loadingMessage();
+        loadingTxt = ui.showMessage("loading...",submitBtn.parentElement.parentElement,false);
         fetch(`http://127.0.0.1:8000/wcresults/results-${converTime(dateObj["dateInput"])}`)
+            .catch(err => {
+                loadingTxt.remove()
+                ui.showMessage("Internal Error. Please try again later.",submitBtn.parentElement.parentElement,true)
+            })
             .then(response => response.json())
             .then(response => {
                 let matchArray = [];
@@ -72,13 +91,11 @@ function eventRegister(){
                         groupName:data["group_name"],
                     })
                 })
-                console.log(response, matchArray);
                 loadingTxt.remove();
                 ui.removeHTML();
                 ui.loadMatches(matchArray);
                 dateMatchInput.textContent = dateObj["dateInput"];
-            })
-            .catch(err => console.error(err));
+            });
     });
     dateInput.addEventListener("blur", dateChecker);
 }
@@ -88,7 +105,6 @@ function dateChecker(e){
         return;
     }
     dateObj["dateInput"] = e.target.value;
-    console.log(dateObj);
 }
 
 function converTime(string){
