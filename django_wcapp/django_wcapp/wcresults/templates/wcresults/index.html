@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static '/assets/styles/styles.css' %}">
+    <title>World Cup Schedules</title>
+</head>
+<body>
+    <main>
+        <h1>World Cup Schedule</h1>
+        <div class="error-container">
+
+        </div>
+        <section class="content">
+            <form action="" class="date-form">
+                <fieldset>
+                    <label for="date-picker">Choose the date:</label>
+                    <input type="date" id="date-picker" required>
+                </fieldset>
+                <input type="submit" value="send">
+            </form>
+        </section>
+        <section class="content result-container">
+            <h2>Matches:</h2>
+            <div>
+                <div class="match-data">
+                    <div class="match-data-container">
+                        <h3>
+                            Group A
+                        </h3>
+                        <div class="match-data-metadata">
+                            <p>
+                                Country A -
+                                Country B
+                            </p>
+                            <div class="match-data-result">
+                                <p>
+                                    Result: 1-1
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="match-data-container">
+                        <h3>
+                            Group B
+                        </h3>
+                        <div class="match-data-metadata">
+                            <p>
+                                Country C -
+                                Country D
+                            </p>
+                            <div class="match-data-result">
+                                <p>
+                                    Result: 1-1
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="match-data-container">
+                        <h3>
+                            Group C
+                        </h3>
+                        <div class="match-data-metadata">
+                            <p>
+                                Country E -
+                                Country F
+                            </p>
+                            <div class="match-data-result">
+                                <p>
+                                    Result: 1-1
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="date-data">
+                    <h4>
+                        mm/dd/yy
+                    </h4>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>
+            All rights reserved 2022
+        </p>
+    </footer>
+    <script src="{% static '/assets/js/app.js' %}"></script>
+</body>
+</html>

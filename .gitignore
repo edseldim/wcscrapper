@@ -1,0 +1,6 @@
+*.zip
+*.exe
+.venv/
+__pycache__
+migrations
+*.sqlite3
