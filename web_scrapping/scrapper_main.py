@@ -48,7 +48,7 @@ if "__main__" == __name__:
     # checks whether the HTML has already been generated 
     if not any([dir_file.name.lower() == "wcresults.html" for dir_file in Path(__file__).parent.iterdir()]):
         # if not, run selenium
-        subprocess.run(["python","web_scrapping\get_all_webpage.py"],shell=True)
+        subprocess.run(["python",Path("web_scrapping","get_all_webpage.py")])
 
     with open(Path(Path(__file__).parent,"WCresults.html"),"r",encoding="utf-8") as f:
             scrapper2 = webObjScrapper("https://onefootball.com/en/competition/fifa-world-cup-12/fixtures")

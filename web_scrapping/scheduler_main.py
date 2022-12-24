@@ -3,8 +3,8 @@ from pathlib import Path
 from datetime import datetime
 
 def call_scrapper():
-    print("im alive")
-    subprocess.run(["python", "web_scrapping\scrapper_main.py"],shell=True)
+    print("Scrapper executed at "+str(time.now()))
+    subprocess.run(["python", Path("web_scrapping","scrapper_main.py")])
 
 def move_result():
     for file_obj in Path("./web_scrapping/").iterdir():
