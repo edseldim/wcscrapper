@@ -18,4 +18,4 @@ my_env["webdriver_location"] = my_env.get("webdriver_location") or "web_scrappin
 my_env["scrapper_exec_time"] = my_env.get("scrapper_exec_time") or "60"
 
 subprocess.Popen([my_env["python_executable"],Path("web_scrapping","scheduler_main.py")])
-subprocess.Popen([my_env["python_executable"],Path("django_wcapp","django_wcapp","manage.py"),"runserver",my_env["django_server_address_port"]])
+subprocess.run([my_env["python_executable"],Path("django_wcapp","django_wcapp","manage.py"),"runserver",my_env["django_server_address_port"]])
