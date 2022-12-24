@@ -3,12 +3,20 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By 
 from pathlib import Path
-import unittest
+from selenium.webdriver.chrome.options import Options
+import unittest, os
 
 class WCResultsScrapper(unittest.TestCase):
 
     def setUp(self):
-        self.driver = webdriver.Chrome(executable_path="web_scrapping\chromedriver.exe")
+        options = Options()
+        # options.add_argument("--no-sandbox")
+        # options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--headless")
+        options.add_argument("window-size=1920,1080")
+        #options.add_argument("--disable-gpu")
+
+        self.driver = webdriver.Chrome(executable_path=Path(os.environ["webdriver_location"]), options=options)
         self.driver.implicitly_wait(5)
         self.driver.maximize_window()
         self.driver.get("https://onefootball.com/en/competition/fifa-world-cup-12/fixtures")

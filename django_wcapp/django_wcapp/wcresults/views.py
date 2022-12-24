@@ -8,7 +8,7 @@ import json,os
 os.chdir(Path(__file__).parent.parent)
 # Create your views here.
 def homepage(request):
-    return render(request,"wcresults/index.html",{})
+    return render(request,Path("wcresults","index.html"),{})
 
 def return_hello_world(request,date_data):
     print(date_data)
@@ -19,7 +19,7 @@ def return_hello_world(request,date_data):
     else:
         wc_data = list()
         wc_data_result = list()
-        with open("result\scrapper_result\WCresults.json") as f:
+        with open(Path("result","scrapper_result","WCresults.json")) as f:
             wc_data = json.load(f)
         for match_data in wc_data:
             if date_queried.strftime("%y-%m-%d") in match_data["match_time"]:

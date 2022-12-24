@@ -1,0 +1,5 @@
+{
+    "django_key":"DJANGO-INSECURE-KEY",
+    "webdriver_location":"web_scrapping/chromedriver.exe",
+    "scrapper_exec_time":"60"
+}

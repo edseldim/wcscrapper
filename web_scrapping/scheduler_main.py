@@ -9,7 +9,7 @@ def call_scrapper():
 def move_result():
     for file_obj in Path("./web_scrapping/").iterdir():
         if file_obj.name.lower() == "wcresults.json":
-            with open("django_wcapp/django_wcapp/result/scrapper_result/WCresults.json","w") as f:
+            with open(Path("django_wcapp","django_wcapp","result","scrapper_result","WCresults.json"),"w") as f:
                 new_json = json.loads(file_obj.read_text()) # read the file before this with statement and pass it to the json.load
                 json.dump(new_json,fp=f)
             print("file written at",datetime.fromtimestamp(file_obj.stat().st_mtime))
