@@ -72,7 +72,7 @@ function eventRegister(){
 
         e.preventDefault();
         loadingTxt = ui.showMessage("loading...",submitBtn.parentElement.parentElement,false);
-        fetch(`http://127.0.0.1:8000/wcresults/results-${converTime(dateObj["dateInput"])}`)
+        fetch(`http://${document.location["host"]}/wcresults/results-${converTime(dateObj["dateInput"])}`)
             .catch(err => {
                 loadingTxt.remove()
                 ui.showMessage("Internal Error. Please try again later.",submitBtn.parentElement.parentElement,true)
