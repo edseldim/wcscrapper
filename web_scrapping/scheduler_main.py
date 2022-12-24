@@ -3,7 +3,7 @@ from pathlib import Path
 from datetime import datetime
 
 def call_scrapper():
-    print("Scrapper executed at "+str(time.now()))
+    print("Scrapper executed on "+str(time.now()))
     subprocess.run(["python", Path("web_scrapping","scrapper_main.py")])
 
 def move_result():
@@ -12,7 +12,7 @@ def move_result():
             with open(Path("django_wcapp","django_wcapp","result","scrapper_result","WCresults.json"),"w") as f:
                 new_json = json.loads(file_obj.read_text()) # read the file before this with statement and pass it to the json.load
                 json.dump(new_json,fp=f)
-            print("file written at",datetime.fromtimestamp(file_obj.stat().st_mtime))
+            print("file written on",datetime.fromtimestamp(file_obj.stat().st_mtime))
 
 def wipe_results():
     for file_path in ["web_scrapping/WCresults.html","web_scrapping/WCresults.json"]:
